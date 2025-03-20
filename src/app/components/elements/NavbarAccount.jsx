@@ -5,7 +5,7 @@ import { FaChevronDown } from "react-icons/fa6";
 import Link from "next/link";
 
 const NavbarAccount = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
 
   return (
     <>
@@ -18,7 +18,7 @@ const NavbarAccount = () => {
           </div>
         </div>
       ) : (
-        <Link href={"/"}>
+        <Link href={"/login"}>
           <p className="me-20 text-lg ">
             <span className="text-[#6687F3]">Login</span> First to Checkout
           </p>
