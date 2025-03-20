@@ -11,15 +11,15 @@ const NavbarAccount = () => {
     <>
       {isLogin ? (
         <div className="flex items-center justify-between me-20">
-          <MdOutlineShoppingCart className="text-lg"/>
+          <MdOutlineShoppingCart className="text-lg" />
           <div className="flex items-center border-l border-black ps-2 h-fit ms-4">
             <p className="text-lg">Hi, Naufal</p>
-            <FaChevronDown className="text-sm ms-2 text-slate-500"/>
+            <FaChevronDown className="text-sm ms-2 text-slate-500" />
           </div>
         </div>
       ) : (
-        <Link href={"/login"}>
-          <p className="me-20 text-lg ">
+        <Link href={"/login"} className="me-20">
+          <p className="text-lg ">
             <span className="text-[#6687F3]">Login</span> First to Checkout
           </p>
         </Link>

@@ -1,12 +1,23 @@
-import Link from 'next/link';
-import React from 'react'
+"use client";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React from "react";
 
 const LoginForm = () => {
+  const router = useRouter();
+
+  const loginHandler = (e) => {
+    e.preventDefault();
+    router.push("/");
+  };
+
   return (
     <div>
-      <h1 className="text-3xl font-bold text-[#6687F3] mb-10 lg:mb-10 xl:mb-15">Login</h1>
+      <h1 className="text-3xl font-bold text-[#6687F3] mb-10 lg:mb-10 xl:mb-15">
+        Login
+      </h1>
       <p className="text-xl font-semibold mb-5">Login to your account</p>
-      <form action="">
+      <form action="" onSubmit={loginHandler}>
         <label htmlFor="" className="block mb-2 text-lg">
           Username
         </label>
@@ -38,6 +49,6 @@ const LoginForm = () => {
       </form>
     </div>
   );
-}
+};
 
-export default LoginForm
+export default LoginForm;

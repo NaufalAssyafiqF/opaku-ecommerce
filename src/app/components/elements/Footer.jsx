@@ -7,7 +7,7 @@ import { inter } from "@/app/fonts";
 
 const Footer = () => {
   return (
-    <div className="w-full border-t">
+    <div className="w-full border-t border-black">
       <div className="max-w-[1280px] mx-auto flex justify-between py-10 px-20">
         <div className="">
           <h1 className={`${inter.className} text-3xl font-extrabold`}>
