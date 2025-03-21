@@ -5,13 +5,15 @@ import { FaChevronDown } from "react-icons/fa6";
 import Link from "next/link";
 
 const NavbarAccount = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
     <>
       {isLogin ? (
         <div className="flex items-center justify-between me-20">
-          <MdOutlineShoppingCart className="text-lg" />
+          <Link href={"/checkout"}>
+            <MdOutlineShoppingCart className="text-lg" />
+          </Link>
           <div className="flex items-center border-l border-black ps-2 h-fit ms-4">
             <p className="text-lg">Hi, Naufal</p>
             <FaChevronDown className="text-sm ms-2 text-slate-500" />
