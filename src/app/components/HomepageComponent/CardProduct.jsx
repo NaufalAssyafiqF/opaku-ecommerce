@@ -13,7 +13,7 @@ const CardProduct = ({ product }) => {
           width={1000}
           height={1000}
           alt="product img"
-          className="rounded-xl w-full h-full object-cover"
+          className="rounded-xl w-full h-full"
         />
       </div>
       <div className="mt-2">

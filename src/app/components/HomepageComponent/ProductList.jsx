@@ -4,7 +4,6 @@ import CardProduct from "./CardProduct";
 
 const ProductList = () => {
   const [dataProducts, setDataProducts] = useState([]);
-  console.log({ dataProducts });
 
   useEffect(() => {
     const getdata = async () => {

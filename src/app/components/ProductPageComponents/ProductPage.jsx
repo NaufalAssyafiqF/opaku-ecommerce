@@ -27,13 +27,13 @@ const ProductPage = () => {
       <hr className="w-full border-1" />
       <div className="flex mt-10 gap-x-10">
         <div className="w-[40%]">
-          <div className="bg-[#d9d9d9] p-10 rounded-xl">
+          <div className="bg-[#d9d9d9] p-10 rounded-xl ">
             <Image
               src={getProduct?.image}
               width={300}
               height={300}
               alt="product image"
-              className="rounded-xl object-cover w-full"
+              className="rounded-xl w-full max-h-[450px]"
             />
           </div>
         </div>
