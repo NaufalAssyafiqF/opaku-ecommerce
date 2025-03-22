@@ -9,7 +9,7 @@ const NavbarAccount = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [getUsername, setGetUsername] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const { setCartList } = useContext(Cart);
+  const { cartlist, setCartList, notif } = useContext(Cart);
 
   const logouthandler = () => {
     localStorage.removeItem("username");
@@ -29,8 +29,14 @@ const NavbarAccount = () => {
     <>
       {isLogin ? (
         <div className="flex items-center justify-between me-20">
-          <Link href={"/checkout"}>
-            <MdOutlineShoppingCart className="text-lg" />
+          <Link href={"/checkout"} className="relative">
+            <MdOutlineShoppingCart className="text-xl" />
+
+            {notif > 0 && (
+              <span className="absolute top-0 right-0 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center text-xs text-white transform translate-x-1/2 -translate-y-1/2">
+                {notif}
+              </span>
+            )}
           </Link>
           <div className="flex items-center border-l border-black ps-2 h-fit ms-4 relative">
             <p className="text-lg">Hi, {getUsername}</p>

@@ -8,7 +8,7 @@ import  Cart  from "@/app/context/CartState";
 
 const DescProduct = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
-  const { setCartList, cartList } = useContext(Cart);
+  const { setCartList, cartList, handleNotif } = useContext(Cart);
 
   console.log(cartList);
 
@@ -24,6 +24,7 @@ const DescProduct = ({ product }) => {
 
   const addtoChart = () => {
     setCartList((prevCart) => [...prevCart, { ...product, quantity }]);
+    handleNotif();
   };
 
   return (

@@ -5,8 +5,14 @@ import React from "react";
 import { AiOutlineShopping } from "react-icons/ai";
 
 const SummaryCheckout = () => {
-  const { cartList } = useContext(Cart);
+  const { cartList, setCartList, setNotif } = useContext(Cart);
   const [summary, setSummary]= useState({});
+
+  const checkoutHandler = () => {
+    alert("checkout success");
+    setCartList([]);
+    setNotif(0)
+  };
 
   useMemo(() => {
     if (cartList.length > 0) {
@@ -64,7 +70,14 @@ const SummaryCheckout = () => {
           <p>Total</p>
           <p>$ {summary.total}</p>
         </div>
-        <button className="w-full text-lg text-white font-medium flex items-center justify-center gap-x-2 mt-4 px-4 py-2 bg-[#6687F3] hover:bg-[#6687f3e2] rounded-lg cursor-pointer smooth-animation">
+        <button
+          className={`w-full text-lg font-medium text-white flex items-center justify-center gap-x-2 mt-4 px-4 py-2 bg-[#6687F3] hover:bg-[#6687f3e2] rounded-lg  smooth-animation ${
+            cartList.length === 0
+              ? "disabled cursor-not-allowed "
+              : " cursor-pointer"
+          }`}
+          onClick={checkoutHandler}
+        >
           Checkout <AiOutlineShopping />
         </button>
       </div>

@@ -18,7 +18,7 @@ const CartListComponent = () => {
         </thead>
         <tbody className="">
           {cartList && cartList.map((item) => (
-            <tr className="border-b-2 border-slate-200  py-2">
+            <tr key={item.id} className="border-b-2 border-slate-200  py-2">
               <td className="flex items-center space-x-4 py-2 pe-4">
                 <Image
                   src={item.image}
