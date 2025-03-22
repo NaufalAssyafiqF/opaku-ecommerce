@@ -7,11 +7,11 @@ import { AiOutlineShopping } from "react-icons/ai";
 const SummaryCheckout = () => {
   const { cartList } = useContext(Cart);
   const [summary, setSummary]= useState({});
-  console.log(summary);
 
   useMemo(() => {
     if (cartList.length > 0) {
       const subtotal = cartList.reduce((acc, item) => acc + item.price * item.quantity, 0);
+      const subtotalFormatted = subtotal.toFixed(2);
       const shippingCost = 20;
       const discount = 5;
       const tax = subtotal * 0.12;
@@ -19,7 +19,7 @@ const SummaryCheckout = () => {
       const total = subtotal + shippingCost - discount + tax;
       const totalFormatted = total.toFixed(2);
       setSummary({
-        subtotal,
+        subtotal: subtotalFormatted,
         shippingCost,
         discount,
         tax : taxFormatted,

@@ -1,14 +1,38 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 
 const LoginForm = () => {
   const router = useRouter();
+  const [usernameValue, setUsernameValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
 
-  const loginHandler = (e) => {
+  const loginHandler = async (e) => {
     e.preventDefault();
-    router.push("/");
+    const fetchData = async () => {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: usernameValue,
+          password: passwordValue,
+        }),
+      });
+
+      return res.json();
+    };
+
+    const data = await fetchData();
+    
+    if (data.isLogin==true) {
+      localStorage.setItem("username", usernameValue);
+      router.push("/");
+    } else {
+      alert(data.message);
+    }
   };
 
   return (
@@ -25,6 +49,7 @@ const LoginForm = () => {
           type="text"
           placeholder="Username"
           className="block w-full border rounded-lg py-3 px-4"
+          onChange={(e) => setUsernameValue(e.target.value)}
         />
         <label htmlFor="" className="block mb-2 mt-4 text-lg">
           Password
@@ -33,6 +58,7 @@ const LoginForm = () => {
           type="password"
           placeholder="Password"
           className="block w-full border rounded-lg py-3 px-4"
+          onChange={(e) => setPasswordValue(e.target.value)}
         />
         <button
           type="submit"
