@@ -1,14 +1,14 @@
 "use client";
-import { sendGTMEvent } from '@next/third-parties/google';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react'
+import { sendGTMEvent } from "@next/third-parties/google";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 
 const RegisterForm = () => {
   const [usernameValue, setUsernameValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [password2value, setPassword2Value] = useState("");
-  
+
   const router = useRouter();
 
   const registerHandler = async (e) => {
@@ -32,19 +32,21 @@ const RegisterForm = () => {
       });
 
       return await res.json();
-    }
+    };
 
     const data = await fetchData();
 
     if (data.isLogin) {
-      sendGTMEvent({ username: usernameValue });
+      sendGTMEvent({
+        event: "sign_up_success",
+        value: { username: usernameValue },
+      });
       alert("register success, please login");
       router.push("/login");
     } else {
       alert(data.message);
     }
-  }
-      
+  };
 
   return (
     <div>
@@ -98,4 +100,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm
+export default RegisterForm;
