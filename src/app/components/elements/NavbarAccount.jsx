@@ -9,12 +9,13 @@ const NavbarAccount = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [getUsername, setGetUsername] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const { cartlist, setCartList, notif } = useContext(Cart);
+  const { cartlist, setCartList, notif, setNotif } = useContext(Cart);
 
   const logouthandler = () => {
     localStorage.removeItem("username");
     setIsLogin(false);
     setCartList([]);
+    setNotif(0);
   };
 
   useEffect(() => {
