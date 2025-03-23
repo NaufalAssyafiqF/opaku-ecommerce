@@ -1,4 +1,5 @@
 "use client";
+import { sendGTMEvent } from '@next/third-parties/google';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
@@ -36,6 +37,7 @@ const RegisterForm = () => {
     const data = await fetchData();
 
     if (data.isLogin) {
+      sendGTMEvent({ username: usernameValue });
       alert("register success, please login");
       router.push("/login");
     } else {
