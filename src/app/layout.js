@@ -4,7 +4,7 @@ import "./globals.css";
 import { poppins } from "./fonts";
 import Cart from "./context/CartState";
 
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 export default function RootLayout({ children }) {
   const [cartList, setCartList] = useState([]);
@@ -16,6 +16,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" className={poppins.className}>
+      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER} />
       <body>
         <Cart.Provider
           value={{ cartList, setCartList, handleNotif, notif, setNotif }}
