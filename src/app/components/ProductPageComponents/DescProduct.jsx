@@ -5,6 +5,7 @@ import { TiMinus } from "react-icons/ti";
 import { FaPlus, FaArrowRightLong } from "react-icons/fa6";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import  Cart  from "@/app/context/CartState";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 const DescProduct = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
@@ -25,6 +26,7 @@ const DescProduct = ({ product }) => {
   const addtoChart = () => {
     setCartList((prevCart) => [...prevCart, { ...product, quantity }]);
     handleNotif();
+    sendGTMEvent({ event: "buttonClicked", value: "xyz" });
   };
 
   return (
