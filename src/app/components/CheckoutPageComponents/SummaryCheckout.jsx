@@ -3,20 +3,25 @@ import { useContext, useMemo, useState } from "react";
 import Cart from "@/app/context/CartState";
 import React from "react";
 import { AiOutlineShopping } from "react-icons/ai";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 const SummaryCheckout = () => {
   const { cartList, setCartList, setNotif } = useContext(Cart);
-  const [summary, setSummary]= useState({});
+  const [summary, setSummary] = useState({});
 
   const checkoutHandler = () => {
     alert("checkout success");
+    sendGTMEvent({ event: "checkout_success", value: {total: summary.total} });
     setCartList([]);
-    setNotif(0)
+    setNotif(0);
   };
 
   useMemo(() => {
     if (cartList.length > 0) {
-      const subtotal = cartList.reduce((acc, item) => acc + item.price * item.quantity, 0);
+      const subtotal = cartList.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0
+      );
       const subtotalFormatted = subtotal.toFixed(2);
       const shippingCost = 20;
       const discount = 5;
@@ -28,7 +33,7 @@ const SummaryCheckout = () => {
         subtotal: subtotalFormatted,
         shippingCost,
         discount,
-        tax : taxFormatted,
+        tax: taxFormatted,
         total: totalFormatted,
       });
     } else {
