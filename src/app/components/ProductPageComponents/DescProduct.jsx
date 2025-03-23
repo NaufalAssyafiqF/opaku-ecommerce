@@ -4,7 +4,7 @@ import { FaStar } from "react-icons/fa";
 import { TiMinus } from "react-icons/ti";
 import { FaPlus, FaArrowRightLong } from "react-icons/fa6";
 import { MdOutlineShoppingCart } from "react-icons/md";
-import  Cart  from "@/app/context/CartState";
+import Cart from "@/app/context/CartState";
 import { sendGTMEvent } from "@next/third-parties/google";
 
 const DescProduct = ({ product }) => {
@@ -26,7 +26,14 @@ const DescProduct = ({ product }) => {
   const addtoChart = () => {
     setCartList((prevCart) => [...prevCart, { ...product, quantity }]);
     handleNotif();
-    sendGTMEvent({ event: "buttonClicked", value: "xyz" });
+    sendGTMEvent({
+      event: "add_to_cart",
+      value: {
+        item_name: product.title,
+        price: product.price,
+        quantity: quantity,
+      },
+    });
   };
 
   return (
@@ -63,7 +70,10 @@ const DescProduct = ({ product }) => {
             <FaPlus className="cursor-pointer" />
           </button>
         </div>
-        <button className="flex items-center justify-center w-2/3 bg-[#6687F3] hover:bg-[#6687f3e2] px-4 py-3 rounded-lg text-white mt-4 cursor-pointer" onClick={addtoChart}>
+        <button
+          className="flex items-center justify-center w-2/3 bg-[#6687F3] hover:bg-[#6687f3e2] px-4 py-3 rounded-lg text-white mt-4 cursor-pointer"
+          onClick={addtoChart}
+        >
           Add to chart
           <MdOutlineShoppingCart className="ms-3" />
         </button>
