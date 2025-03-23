@@ -11,7 +11,20 @@ const SummaryCheckout = () => {
 
   const checkoutHandler = () => {
     alert("checkout success");
-    sendGTMEvent({ event: "checkout_success", value: {total: summary.total} });
+    const itemCheckout = cartList.map((item) => ({
+      id: item.id,
+      title: item.title,
+      quantity: item.quantity,
+      price: item.price,
+    }))
+    sendGTMEvent({
+      event: "checkout_success",
+      value: {
+        total: summary.total,
+        username: localStorage.getItem("username"),
+        items: itemCheckout
+      },
+    });
     setCartList([]);
     setNotif(0);
   };
