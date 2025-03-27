@@ -16,6 +16,12 @@ const NavbarAccount = () => {
     setIsLogin(false);
     setCartList([]);
     setNotif(0);
+    sendGTMEvent({
+          event: "user_logout",
+          value: {
+            username: getUsername,
+          },
+        });
   };
 
   useEffect(() => {
