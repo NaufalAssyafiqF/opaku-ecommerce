@@ -18,7 +18,7 @@ const Footer = () => {
           <div className="flex space-x-4 mt-6">
             <FaInstagram className="text-2xl" />
             <AiOutlineFacebook className="text-2xl" />
-            <Link href={"https://twitter.com/"}>
+            <Link href={"https://twitter.com/"} className="twitter-link">
               <FaXTwitter className="text-2xl" />
             </Link>
           </div>
