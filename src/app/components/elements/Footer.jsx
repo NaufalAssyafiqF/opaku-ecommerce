@@ -4,6 +4,7 @@ import { AiOutlineFacebook } from "react-icons/ai";
 import { CgMail } from "react-icons/cg";
 import { FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import { inter } from "@/app/fonts";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -15,9 +16,11 @@ const Footer = () => {
           </h1>
           <p className="mt-2">Discover your best look with Opaku</p>
           <div className="flex space-x-4 mt-6">
-            <FaInstagram className="text-2xl"/>
-            <AiOutlineFacebook className="text-2xl"/>
-            <FaXTwitter className="text-2xl"/>
+            <FaInstagram className="text-2xl" />
+            <AiOutlineFacebook className="text-2xl" />
+            <Link href={"https://twitter.com/"}>
+              <FaXTwitter className="text-2xl" />
+            </Link>
           </div>
         </div>
         <div className="">
