@@ -29,6 +29,7 @@ const DescProduct = ({ product }) => {
     sendGTMEvent({
       event: "add_to_cart",
       value: {
+        username: localStorage.getItem("username"),
         item_name: product.title,
         price: product.price,
         quantity: quantity,
