@@ -16,15 +16,21 @@ const SummaryCheckout = () => {
       title: item.title,
       quantity: item.quantity,
       price: item.price,
-    }))
+    }));
+    const date = new Date();
+    const transactionId = `TId_${date.getTime()}`;
+
     sendGTMEvent({
-      event: "checkout_success",
-      value: {
-        total: summary.total,
-        username: localStorage.getItem("username"),
-        items: itemCheckout
+      event: "purchase",
+      ecommerce: {
+        transaction_id: transactionId,
+        value: summary.total,
+        tax: summary.tax,
+        shipping: summary.shippingCost,
+        items: itemCheckout,
       },
     });
+
     setCartList([]);
     setNotif(0);
   };
