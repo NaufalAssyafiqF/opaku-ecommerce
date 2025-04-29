@@ -24,6 +24,7 @@ const ProductPage = () => {
           value: getProduct.price,
           items: [
             {
+              test: "ini hanya test",
               id: getProduct.id,
               name: getProduct.title,
               price: getProduct.price,
