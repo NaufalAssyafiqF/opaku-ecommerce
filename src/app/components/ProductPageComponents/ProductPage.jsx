@@ -17,7 +17,14 @@ const ProductPage = () => {
       ).then((res) => res.json());
 
       setProduct(res);
-      
+    };
+
+    getData();
+    
+  }, []);
+
+  useEffect(() => {
+    if(getProduct.length > 0){
       sendGTMEvent({
         event: "view_item",
         ecommerce: {
@@ -32,11 +39,8 @@ const ProductPage = () => {
           ],
         },
       });
-    };
-
-    getData();
-    
-  }, []);
+    }
+  })
 
   return (
     <div className="max-w-[1280px] mx-auto mb-20 px-20">
