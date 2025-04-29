@@ -24,7 +24,7 @@ const ProductPage = () => {
   }, []);
 
   useEffect(() => {
-    if(getProduct.length > 0){
+    if (getProduct.length > 0) {
       sendGTMEvent({
         event: "view_item",
         ecommerce: {
@@ -40,7 +40,7 @@ const ProductPage = () => {
         },
       });
     }
-  })
+  }, [getProduct]);
 
   return (
     <div className="max-w-[1280px] mx-auto mb-20 px-20">
