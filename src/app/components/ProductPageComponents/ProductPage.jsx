@@ -4,6 +4,7 @@ import DescProduct from "./DescProduct";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import dummyImg from "@/app/assets/images/dummy-img.png";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 const ProductPage = () => {
   const [getProduct, setProduct] = useState([]);
@@ -17,6 +18,18 @@ const ProductPage = () => {
 
       setProduct(res);
     };
+
+    sendGTMEvent({
+      event: "view_item",
+      ecommerce: {
+        value: getProduct.price,
+        items: [{
+          id: getProduct.id,
+          name: getProduct.title,
+          price: getProduct.price,
+        }]
+      }
+    })
 
     getData();
   }, []);
