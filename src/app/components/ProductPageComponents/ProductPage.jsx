@@ -24,7 +24,7 @@ const ProductPage = () => {
   }, []);
 
   useEffect(() => {
-    if (getProduct.length > 0) {
+    if (getProduct && getProduct.id) {
       sendGTMEvent({
         event: "view_item",
         ecommerce: {
@@ -39,6 +39,7 @@ const ProductPage = () => {
           ],
         },
       });
+      console.log({ getProduct });
     }
   }, [getProduct]);
 
