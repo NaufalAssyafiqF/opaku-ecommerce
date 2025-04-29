@@ -17,21 +17,24 @@ const ProductPage = () => {
       ).then((res) => res.json());
 
       setProduct(res);
+      
+      sendGTMEvent({
+        event: "view_item",
+        ecommerce: {
+          value: getProduct.price,
+          items: [
+            {
+              id: getProduct.id,
+              name: getProduct.title,
+              price: getProduct.price,
+            },
+          ],
+        },
+      });
     };
 
-    sendGTMEvent({
-      event: "view_item",
-      ecommerce: {
-        value: getProduct.price,
-        items: [{
-          id: getProduct.id,
-          name: getProduct.title,
-          price: getProduct.price,
-        }]
-      }
-    })
-
     getData();
+    
   }, []);
 
   return (
