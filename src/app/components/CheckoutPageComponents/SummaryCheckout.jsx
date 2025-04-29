@@ -13,12 +13,15 @@ const SummaryCheckout = () => {
     alert("checkout success");
     const itemCheckout = cartList.map((item) => ({
       id: item.id,
-      title: item.title,
+      item_name: item.title,
       quantity: item.quantity,
       price: item.price,
     }));
     const date = new Date();
     const transactionId = `TId_${date.getTime()}`;
+
+    console.log(itemCheckout);
+    
 
     sendGTMEvent({
       event: "purchase",
