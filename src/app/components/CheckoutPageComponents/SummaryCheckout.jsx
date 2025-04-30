@@ -22,12 +22,14 @@ const SummaryCheckout = () => {
 
     console.log(itemCheckout);
 
+    const total_int = parseInt(summary.total);
+
     sendGTMEvent({
       event: "purchase",
       ecommerce: {
         username: localStorage.getItem("username"),
         transaction_id: transactionId,
-        value: summary.total,
+        value: total_int,
         tax: summary.tax,
         shipping: summary.shippingCost,
         currency: "USD",
