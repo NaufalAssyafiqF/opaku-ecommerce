@@ -26,6 +26,7 @@ const SummaryCheckout = () => {
     sendGTMEvent({
       event: "purchase",
       ecommerce: {
+        username: localStorage.getItem("username"),
         transaction_id: transactionId,
         value: summary.total,
         tax: summary.tax,

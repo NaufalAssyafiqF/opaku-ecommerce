@@ -29,11 +29,11 @@ const ProductPage = () => {
         event: "view_item",
         ecommerce: {
           value: getProduct.price,
+          username: localStorage.getItem("username"),
           items: [
             {
-              test: "ini hanya test",
               id: getProduct.id,
-              name: getProduct.title,
+              item_name: getProduct.title,
               price: getProduct.price,
             },
           ],
