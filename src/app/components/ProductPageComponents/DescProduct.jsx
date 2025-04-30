@@ -28,11 +28,17 @@ const DescProduct = ({ product }) => {
     handleNotif();
     sendGTMEvent({
       event: "add_to_cart",
-      value: {
+      ecommerce: {
+        value: product.price,
         username: localStorage.getItem("username"),
-        item_name: product.title,
-        price: product.price,
-        quantity: quantity,
+        items: [
+          {
+            id: product.id,
+            item_name: product.title,
+            price: product.price,
+            quantity: quantity,
+          },
+        ],
       },
     });
   };
