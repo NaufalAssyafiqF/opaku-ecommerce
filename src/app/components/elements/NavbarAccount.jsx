@@ -4,6 +4,7 @@ import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa6";
 import Link from "next/link";
 import Cart from "@/app/context/CartState";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 const NavbarAccount = () => {
   const [isLogin, setIsLogin] = useState(false);

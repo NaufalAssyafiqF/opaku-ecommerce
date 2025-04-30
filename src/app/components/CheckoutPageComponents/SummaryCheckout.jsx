@@ -21,7 +21,6 @@ const SummaryCheckout = () => {
     const transactionId = `TId_${date.getTime()}`;
 
     console.log(itemCheckout);
-    
 
     sendGTMEvent({
       event: "purchase",
@@ -31,6 +30,7 @@ const SummaryCheckout = () => {
         value: summary.total,
         tax: summary.tax,
         shipping: summary.shippingCost,
+        currency: "USD",
         items: itemCheckout,
       },
     });
