@@ -31,6 +31,7 @@ const DescProduct = ({ product }) => {
       ecommerce: {
         value: product.price,
         username: localStorage.getItem("username"),
+        user_id: localStorage.getItem("userId"),
         items: [
           {
             id: product.id,

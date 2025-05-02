@@ -26,6 +26,7 @@ export async function POST(req) {
         {
           isLogin: true,
           message: "Login Success",
+          data: data[0],
         },
         { status: 200 }
       );

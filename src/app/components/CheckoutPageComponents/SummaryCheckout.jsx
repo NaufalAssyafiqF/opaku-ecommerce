@@ -28,6 +28,7 @@ const SummaryCheckout = () => {
       event: "purchase",
       ecommerce: {
         username: localStorage.getItem("username"),
+        user_id: localStorage.getItem("userId"),
         transaction_id: transactionId,
         value: total_int,
         tax: summary.tax,

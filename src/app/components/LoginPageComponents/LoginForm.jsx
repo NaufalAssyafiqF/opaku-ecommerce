@@ -26,9 +26,12 @@ const LoginForm = () => {
     };
 
     const data = await fetchData();
+
+    console.log({data});
     
     if (data.isLogin==true) {
       localStorage.setItem("username", usernameValue);
+      localStorage.setItem("userId", data.data.id);
       router.push("/");
     } else {
       alert(data.message);
