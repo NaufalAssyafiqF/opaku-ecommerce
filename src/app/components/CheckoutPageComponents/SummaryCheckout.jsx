@@ -8,6 +8,7 @@ import { sendGTMEvent } from "@next/third-parties/google";
 const SummaryCheckout = () => {
   const { cartList, setCartList, setNotif } = useContext(Cart);
   const [summary, setSummary] = useState({});
+  const [paymentMethod, setPaymentMethod] = useState("PayPal");
 
   const checkoutHandler = () => {
     alert("checkout success");
@@ -20,9 +21,12 @@ const SummaryCheckout = () => {
     const date = new Date();
     const transactionId = `TId_${date.getTime()}`;
 
-    console.log(itemCheckout);
-
     const total_int = parseInt(summary.total);
+
+    const itemCount = cartList.reduce(
+      (acc, item) => acc + item.quantity,
+      0
+    );
 
     sendGTMEvent({
       event: "purchase",
@@ -34,6 +38,8 @@ const SummaryCheckout = () => {
         tax: summary.tax,
         shipping: summary.shippingCost,
         currency: "USD",
+        items_count: itemCount,
+        payment_type: paymentMethod,
         items: itemCheckout,
       },
     });
@@ -100,6 +106,25 @@ const SummaryCheckout = () => {
         <div className="text-lg font-medium flex justify-between">
           <p>Total</p>
           <p>$ {summary.total}</p>
+        </div>
+
+        <div className="mb-4 mt-4">
+          <label
+            htmlFor="payment-method"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Payment Method
+          </label>
+          <select
+            id="payment-method"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={paymentMethod}
+            onChange={(e) => setPaymentMethod(e.target.value)}
+          >
+            <option value="paypal">PayPal</option>
+            <option value="credit_card">Credit Card</option>
+            <option value="ewallet">eWallet</option>
+          </select>
         </div>
         <button
           className={`w-full text-lg font-medium text-white flex items-center justify-center gap-x-2 mt-4 px-4 py-2 bg-[#6687F3] hover:bg-[#6687f3e2] rounded-lg  smooth-animation ${
