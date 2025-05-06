@@ -8,7 +8,7 @@ import { sendGTMEvent } from "@next/third-parties/google";
 const SummaryCheckout = () => {
   const { cartList, setCartList, setNotif } = useContext(Cart);
   const [summary, setSummary] = useState({});
-  const [paymentMethod, setPaymentMethod] = useState("PayPal");
+  const [paymentMethod, setPaymentMethod] = useState("paypal");
 
   const checkoutHandler = () => {
     alert("checkout success");
