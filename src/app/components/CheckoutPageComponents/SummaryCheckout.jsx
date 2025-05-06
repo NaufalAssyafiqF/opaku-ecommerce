@@ -127,9 +127,10 @@ const SummaryCheckout = () => {
           </select>
         </div>
         <button
+          disabled={cartList.length === 0}
           className={`w-full text-lg font-medium text-white flex items-center justify-center gap-x-2 mt-4 px-4 py-2 bg-[#6687F3] hover:bg-[#6687f3e2] rounded-lg  smooth-animation ${
             cartList.length === 0
-              ? "disabled cursor-not-allowed "
+              ? "opacity-50 cursor-not-allowed "
               : " cursor-pointer"
           }`}
           onClick={checkoutHandler}
